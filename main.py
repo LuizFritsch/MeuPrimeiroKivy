@@ -2,14 +2,17 @@ from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
+from kivy.uix.scrollview import ScrollView
 
-class Incrementador(BoxLayout):
-	pass
+class Tarefas(ScrollView):
+	def __init__(self, tarefas, **kwargs): # keyword arguments letra = 'a'
+		super().__init__(**kwargs)
+		for tarefa in tarefas:
+			self.ids.box.add_widget(Label(text = tarefa, font_size = 30, size_hint_y=None, height=200))
+
+
 class Test(App):
 	def build(self):
-		return Incrementador()
-
-	def incrementar(self,button):
-		self.label.text = str(int(self.label.text)+1)
+		return Tarefas(['Fazer compras', 'Buscar filho', 'Molhar a calçada', 'sds', '13123'])
 t = Test()
 t.run()

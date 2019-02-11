@@ -1,10 +1,9 @@
-<Incrementador>:
-    orientation: "vertical"
-    Button:
-        text: 'Incrementar'
-        font_size: 30
-        on_release: label.text = str(int(label.text)+11)
-    Label:
-        id: label
-        text: '1'
-        font_size: 30
+<Tarefas>:
+    BoxLayout:
+        id : box
+        orientation : "vertical"
+        size_hint_y : None
+        height : self.minimum_height
+
+<Test>:
+    orientation : "vertical"
