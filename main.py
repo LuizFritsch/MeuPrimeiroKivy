@@ -5,12 +5,25 @@ from kivy.uix.label import Label
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import ScreenManager , Screen
 from kivy.core.window import Window
+import socket
 
 class Gerenciador(ScreenManager):
     pass
 
 class Menu(Screen):
     pass
+
+class Pwdcracker(Screen):
+	def on_pre_enter(self):
+		Window.bind(on_keyboard=self.voltar)
+
+	def on_pre_leave(self):
+		Window.unbind(on_keyboard=self.voltar)
+
+	def voltar(self, window, key, *args):
+		if key == 27:
+			App.get_running_app().root.current = "menu"
+		return True
 
 class Tarefas(Screen):
 	def __init__(self, tarefas=[], **kwargs):
@@ -41,5 +54,6 @@ class Tarefa (BoxLayout):
 class Test(App):
 	def build(self):
 		return Gerenciador()
+
 t = Test()
 t.run()

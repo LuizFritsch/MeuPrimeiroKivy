@@ -3,23 +3,37 @@
         name : "menu"
     Tarefas:
         name : "tarefas"
+    Pwdcracker
+        name : "pwdcracker"
+
+
+
+
+
 
 <Menu>
     BoxLayout:
         orientation : "vertical"
         padding : 200
         spacing : 50
-        Image:
-            source : "imagens/tarefa.png"
-            allow_stretch : True
+
         Button :
             text : "Tarefas"
             on_release : app.root.current = "tarefas"
+        Button :
+            text : "pwdcracker"
+            on_release : app.root.current = "pwdcracker"
         Button :
             text : "Assistente"
         Button :
             text : "Sair"
             on_release : app.stop()
+
+
+
+
+
+
 <Tarefas>:
     BoxLayout:
         orientation : "vertical"
@@ -52,6 +66,10 @@
                 width : 60
                 on_release : root.addWidget()
 
+
+
+
+
 <Tarefa>
     size_hint_y : None
     height : 200
@@ -63,3 +81,45 @@
         size_hint_x : None
         width: 60
         on_release : app.root.get_screen("tarefas").ids.box.remove_widget(root)
+
+<Pwdcracker>
+    BoxLayout:
+        orientation : "vertical"
+        ActionBar :
+            ActionView :
+                ActionPrevious :
+                    title : "Pwdcracker"
+                    on_release : app.root.current = "menu"
+                ActionButton :
+                    text: "Sair"
+                    on_release : app.stop()
+        Image:
+            source : "imagens\bruteforce.png"
+            size_hint_y : None
+            height : 100
+            allo_stretch : True
+
+        ScrollView:
+            BoxLayout:
+                id : box
+                orientation : "vertical"
+                size_hint_y : None
+                height : self.minimum_height
+        BoxLayout:
+            orientation: 'vertical'
+
+            spacing : 10
+            TextInput:
+                hint_text : "Target's ip"
+                id : "ip"
+            TextInput:
+                hint_text : "List"
+                id : "lista"
+            TextInput:
+                hint_text : "Username"
+                id : "user"
+            TextInput:
+                hint_text : "threads"
+                id : "threads"
+            Button:
+                text: 'Start'
