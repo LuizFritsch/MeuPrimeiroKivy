@@ -10,10 +10,8 @@
         padding : 200
         spacing : 50
         Image:
-            source : "./imagens/tarefa.png"
-            size_hint_y : None
-            height : 300
-            allow_sctretch : True
+            source : "imagens/tarefa.png"
+            allow_stretch : True
         Button :
             text : "Tarefas"
             on_release : app.root.current = "tarefas"
@@ -25,6 +23,18 @@
 <Tarefas>:
     BoxLayout:
         orientation : "vertical"
+        ActionBar :
+            ActionView :
+                ActionPrevious :
+                    title : "Tarefas"
+                    on_release : app.root.current = "menu"
+                ActionButton :
+                    text: "Sair"
+                    on_release : app.stop()
+                #ActionSeparator:
+                #ActionButton :
+                #    text: "Menu"
+
         ScrollView:
             BoxLayout:
                 id : box
