@@ -7,10 +7,13 @@
 <Menu>
     BoxLayout:
         orientation : "vertical"
-        padding : 100
+        padding : 200
         spacing : 50
         Image:
             source : "./imagens/tarefa.png"
+            size_hint_y : None
+            height : 300
+            allow_sctretch : True
         Button :
             text : "Tarefas"
             on_release : app.root.current = "tarefas"
